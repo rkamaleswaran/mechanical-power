@@ -25,7 +25,7 @@ with serv as
   select icustay_id
     , sum(extract(epoch from endtime - starttime))/60.0/60.0/24.0 as duration_vent_total_days
     , min(starttime) as starttime
-  from ventdurations
+  from ventilation_durations
   group by icustay_id
 )
 select co.icustay_id
