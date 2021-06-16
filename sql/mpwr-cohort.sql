@@ -54,10 +54,10 @@ select t1.subject_id, t1.hadm_id, t1.icustay_id
   , case when has_chartevents_data = 0 then 1 else 0 end as exclusion_bad_data
 
 from t1
-left join public.ventdurations vent
+left join public.ventilation_durations vent
   on vent.icustay_id = t1.icustay_id
   and vent.ventnum = 1 -- first ventilation and age >= 16
-left join public.ventdurations v
+left join public.ventilation_durations v
   on v.icustay_id = t1.icustay_id
   and v.ventnum = 1 -- first ventilation and age >= 16
   and v.duration_hours >= 48 -- mv duration >48h
